@@ -56,3 +56,42 @@ private:
 链接：https://leetcode.cn/problems/sort-list/solution/7fen-ji-jian-cdai-ma-zhi-wei-zheng-li-si-wqr0/
 来源：力扣（LeetCode）
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
+#include <iostream>
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pivotIndex = partition(arr, low, high);
+        quickSort(arr, low, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, high);
+    }
+}
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[low];
+    int i = low, j = high;
+    while (i < j) {
+        while (i < j && arr[j] >= pivot) {
+            j--;
+        }
+        arr[i] = arr[j];
+        while (i < j && arr[i] <= pivot) {
+            i++;
+        }
+        arr[j] = arr[i];
+    }
+    arr[i] = pivot;
+    return i;
+}
+
+int main() {
+    int arr[] = {3, 6, 8, 2, 4, 1, 9, 5, 7};
+    int len = sizeof(arr) / sizeof(arr[0]);
+    quickSort(arr, 0, len - 1);
+    for (int num : arr) {
+        std::cout << num << " ";
+    }
+    return 0;
+}

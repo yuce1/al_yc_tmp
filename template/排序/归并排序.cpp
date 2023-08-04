@@ -87,3 +87,50 @@ private:
 链接：https://leetcode.cn/problems/sort-list/solution/7fen-ji-jian-cdai-ma-zhi-wei-zheng-li-si-wqr0/
 来源：力扣（LeetCode）
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+#include <iostream>
+#include <vector>
+
+void merge(std::vector<int>& arr, int l, int m, int r) {
+    std::vector<int> temp(r - l + 1);
+    int i = l, j = m + 1, k = 0;
+
+    while (i <= m && j <= r) {
+        if (arr[i] <= arr[j]) {
+            temp[k++] = arr[i++];
+        } else {
+            temp[k++] = arr[j++];
+        }
+    }
+
+    while (i <= m) {
+        temp[k++] = arr[i++];
+    }
+
+    while (j <= r) {
+        temp[k++] = arr[j++];
+    }
+
+    for (int p = 0; p < temp.size(); p++) {
+        arr[l + p] = temp[p];
+    }
+}
+
+void mergeSort(std::vector<int>& arr, int l, int r) {
+    if (l >= r) return;
+
+    int m = l + (r - l) / 2;
+    mergeSort(arr, l, m);
+    mergeSort(arr, m + 1, r);
+    merge(arr, l, m, r);
+}
+
+int main() {
+    std::vector<int> arr = {3, 6, 8, 2, 4, 1, 9, 5, 7};
+    mergeSort(arr, 0, arr.size() - 1);
+    for (int num : arr) {
+        std::cout << num << " ";
+    }
+    return 0;
+}
