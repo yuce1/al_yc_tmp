@@ -17,3 +17,8 @@ public:
 
     }
 };
+
+//默认，大顶堆
+priority_queue<int,vector<int>,less<int>>mp;
+//小顶堆
+priority_queue<int,vector<int>,greater<int>>mp;
