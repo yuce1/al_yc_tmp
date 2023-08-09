@@ -59,6 +59,8 @@ private:
 
 
 
+
+//快速排序里面一定要有一个等于，要不就会出现121，循环的情况，就超出时间限制，不走了
 #include <iostream>
 
 void quickSort(int arr[], int low, int high) {
@@ -95,3 +97,5 @@ int main() {
     }
     return 0;
 }
+
+
