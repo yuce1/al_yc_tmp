@@ -2,6 +2,8 @@ class Solution {
 public:
     long long totalCost(vector<int>& costs, int k, int candidates) {
         //小顶锥，用>
+        //返回true，表示不交换顺序，认可当前顺序，否则需要交换
+        //堆相当于从后面输出，队列相当于从前面输出
         auto cmp = [&](const int & a, const int & b) {
             return costs[a]>costs[b]?true:costs[a]==costs[b] && a>b;
         };
