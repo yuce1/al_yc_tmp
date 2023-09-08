@@ -20,7 +20,23 @@ public:
     }
 };
 
+<<<<<<< Updated upstream
 //默认，大顶堆
 priority_queue<int,vector<int>,less<int>>mp;
 //小顶堆
 priority_queue<int,vector<int>,greater<int>>mp;
+=======
+
+bool cmp(int num1, int num2) {
+    return num1 > num2;     // 可以简单理解为 >： 降序排列;  < ： 升序排列
+}
+
+int main() {
+    sort(a, a + 10, cmp);  // 使用自定义排序函数
+
+    
+    sort(arr.begin(), arr.end(), cmp);   // 使用自定义排序函数
+
+    return 0;
+}
+>>>>>>> Stashed changes
